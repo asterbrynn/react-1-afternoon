@@ -8,10 +8,10 @@ export default class EvenAndOdd extends Component {
             oddArray: [],
             userInput: ""
         }
-//        this.evenOdd = this.evenOdd.bind(this);
+        this.evenOdd = this.evenOdd.bind(this);
     }
-    updateState(val) {
-        this.setState( {userInput: val} );
+    handleChange = val => {
+        this.setState({userInput: val})
     }
     evenOdd(input) {
         const arr = input.split(",");
@@ -31,10 +31,13 @@ export default class EvenAndOdd extends Component {
         return (
             <div className="puzzleBox evenAndOddPB">
                 <h4>Evens and Odds</h4>
-                <input className="inputLine" onChange={ e => this.updateState(e.target.value)}/>
-                <button className="confirmationButton" onClick={ () => {this.evenOdd(this.state.userInput)} } >Confirm</button>
-                <span className="resultsBox">Evens: [{JSON.stringify(this.setState.evenArray)}]</span>
-                <span className="resultsBox">Odds: [{JSON.stringify(this.setState.oddArray)}]</span>
+                <input className="inputLine" onChange={ e =>
+                    this.handleChange(e.target.value) }
+                    />
+                <button className="confirmationButton" onClick={ () => 
+                    {this.evenOdd(this.state.userInput)} } >Confirm</button>
+                <span className="resultsBox">Evens: {JSON.stringify(this.state.evenArray)}</span>
+                <span className="resultsBox">Odds: {JSON.stringify(this.state.oddArray)}</span>
             </div>
         )
     }
