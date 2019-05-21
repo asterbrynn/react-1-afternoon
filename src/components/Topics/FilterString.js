@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 export default class FilterString extends Component {
     constructor() {
-        super();
+        super()
         this.state = {
-            unFilteredArray: [],
+            unFilteredArray: ["Aidan", "Murphy", "James", "Ellie", "Alex"],
             userInput: "",
             filteredArray: []
         }
@@ -15,7 +15,14 @@ export default class FilterString extends Component {
         })
     }
     filterString = input => {
-        //
+        const arr = this.state.unFilteredArray;
+        let filtered = [];
+        arr.forEach(val => {
+            if (val.toLowerCase().startsWith(input.toLowerCase())) {
+                filtered.push(val);
+            }
+        })
+        this.setState({filteredArray: filtered})
     }
     render() {
         return (
